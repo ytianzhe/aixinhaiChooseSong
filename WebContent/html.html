@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>开始使用layer</title>
+</head>
+<body>
+
+  
+  
+  <script src="js/jquery-3.3.1.min.js"></script> <!-- 你必须先引入jQuery1.8或以上版本 -->
+  <script src="layer/layer.js"></script>
+  
+  <input type="button" value="提示" id="test1"/>
+  
+  
+  <script>
+  //弹出一个提示层
+  $('#test1').on('click', function(){
+    layer.msg('hello');
+  });
+  </script>
+  
+  </body>
+</html>

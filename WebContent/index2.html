@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>登录</title>
+    
+<!--  jq优先放置在layui之前 不然会引起 i参数 报错-->
+   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script> 
+   <script src="layer/layer.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript">
+
+	
+	//z抓元素
+	var btn =document.getElementById("btn");
+	
+	//询问框
+	function testbtn(){
+	layer.confirm('您是如何看待前端开发？', {
+	  btn: ['重要','奇葩'] //按钮
+	}, function(){
+	  layer.msg('的确很重要', {icon: 1});
+	}, function(){
+	  layer.msg('也可以这样', {
+	    time: 5000, //5s后自动关闭
+	    btn: ['明白了', '知道了']
+	  });
+	});
+	}
+	
+	//提示层msg
+
+	function testmsg(str){
+		layer.msg(str+'不能为空');
+		 }	
+	
+	
+	
+	//墨绿深蓝风 两种弹出方式
+	function test3(){
+	layer.alert('墨绿风格，点击确认看深蓝', {
+	  skin: 'layui-layer-molv' //样式类名
+	  ,closeBtn: 0
+	}, function(){
+	  layer.alert('偶吧深蓝style', {
+	    skin: 'layui-layer-lan'
+	    ,closeBtn: 0
+	    ,anim: 4 //动画类型
+	  });
+	});
+	}
+	
+	
+	//页面层
+function test4(){
+	layer.open({
+	  type: 1,
+	  skin: 'layui-layer-rim', //加上边框
+	  area: ['420px', '240px'], //宽高
+	  content: '信息01232123132'
+	});
+	}
+	
+//自定页
+function test5(){
+layer.open({
+  type: 1,
+  skin: 'layui-layer-demo', //样式类名
+  closeBtn: 0, //不显示关闭按钮 0 开启关闭按钮 1
+  anim: 2,
+  shadeClose: true, //开启遮罩关闭
+  content: '内容1231231313'
+});	
+}
+</script>
+
+
+
+<link rel="icon" href="favicon.ico">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<div class="login-main">
+    <header class="layui-elip">后台登录</header>
+    <form   action=""  method="post" id="loginForm"   >
+        <div class="layui-input-inline">
+            <input type="text" name="AdminUserName"    placeholder="账号" autocomplete="off" id="account"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+            <input type="password" name="AdminUserPassword"  placeholder="密码" autocomplete="off" id="password"
+                   class="layui-input">
+        </div>
+        
+        
+          <div class="layui-input-inline">
+            <input type="hidden" name="methods" value="AdminLogin"/>
+        </div>
+        
+        
+        <div class="layui-input-inline login-btn">
+          <input type="button" class="layui-btn"  value="登入"  onclick="trylogin()"/> 
+        </div>
+        <hr/>
+    </form>
+</div>
+<!--  
+<input type="button"  value="点我" id="btn" onclick="testbtn()"/>
+<input type="button"  value="点我2" id="btn2" onclick="testmsg()"/>
+<input type="button"  value="点我3" id="btn3" onclick="test3()"/>
+<input type="button"  value="点我4" id="btn4" onclick="test4()"/>
+<input type="button"  value="点我5" id="btn5" onclick="test5()"/>
+-->
+
+<script>
+function trylogin(){
+	//testmsg("用户名");
+	var account= $("#account").val();
+	var password= $("#password").val();
+	//alert(account+"---"+password);
+	if(account==null||account==""||account.length==0){
+		layer.msg('用户名不能为空');
+		//testmsg("用户名");
+		//alert("用户名不能为空");
+		return;
+	}
+	else{
+		if(password==null||password==""||password.length==0){
+			layer.msg('密码不能为空');
+			//	testmsg("密码");
+		//	alert("密码不能为空");
+			return;
+		}
+		else{
+			document.getElementById("loginForm").action="/zixinhai/HomeMethods";
+	    	document.getElementById("loginForm").submit();
+			//loginForm
+		}
+	}
+	
+}
+</script>
+
+
+</body>
+</html>
